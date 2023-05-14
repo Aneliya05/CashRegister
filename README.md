@@ -16,14 +16,12 @@
 
 СЪДЪРЖАНИЕ
 
-1.	Описание на проекта
+1.	Описание на проекта 
 2.	Блокова схема
 3.	Електрическа схема
 4.	Списък съставни части
 5.	Сорс код – описание на функционалността
 6.	Заключение
-
-
 
 
 
@@ -48,120 +46,6 @@
 	Keypad 3*4
 	LCD I2C display
 	11 джъмпера
-
-
-
-Сорс код – описание на функционалността
-
-1)	 Използвани библиотеки
- #include <Key.h>
- #include <Keypad.h>
- #include <LCD_I2C.h>
- #include <Wire.h>
-  
-2)	Инициализация на компонентите 
--	Клавиатура:
-//keypad
-const byte ROWS = 4; 
-const byte COLS = 3; 
-char keys[ROWS][COLS] = {
-  {'#','*','0'},
-  {'3','2','1'},
-  {'6','5','4'},
-  {'9','8','7'}
-};
-byte rowPins[ROWS] = {9, 8, 7, 6}; 
-byte colPins[COLS] = {5, 4, 3}; 
-
-Keypad keypad = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS );
-
--	Дисплей:
-LCD_I2C lcd(0x3F, 16, 2);
-
-3)	 Данни, които ще използва приложението
-//data
-double sum;
-double cheeseburgerPrice = 4.90;
-double hamburgerPrice = 5.20;
-double bbqBurgerPrice = 4.80;
-double veggieBurgerPrice = 5.50;
-double pizzaPepperoniPrice = 4.20;
-double pizzaMargaritaPrice = 3.60;
-double friedChickenPrice = 5.20;
-double hotDogPrice = 1.30;
-double juicePrice = 1.80;
-double colaPrice = 2.20;
-4)	Setup
-
-void setup() {
-  Serial.begin(9600);
-  Serial.print("WELCOME TO OUR RESTAURANT! \n");
-  Serial.println();
-}
-
-5)	Loop
-void loop()
-{
-  char key = keypad.getKey(); //взимаме число от keypad-а
-  if(key == '*'){     //ако натиснатият бутон е “*”, дисплеят се включва
-    lcd.begin();
-    lcd.backlight();
-    lcd.print("Hello :)");
-    delay(5000);
-       lcd.setCursor(0,0);
-       lcd.print("NEW RECEIPT");
-    lcd.setCursor(0,1);
-    lcd.print("Add product: ");
-  }
-  shop(); //метод, чрез който можем да избираме какво да си купим
-  
-  if(key == '#'){   //метод за приключване на пазаруването
-         Serial.println();
-      Serial.print("TOTAL:                           ");
-      Serial.println(sum);
-      lcd.clear();
-      lcd.setCursor(0,0);
-      lcd.print("Total: ");
-      lcd.print(sum);
-      lcd.print(" lv.");
-      lcd.setCursor(0,1);
-         lcd.print("Come again :)");
-         delay(5000);
-         lcd.clear();
-      lcd.print("New Receipt:");
-      lcd.setCursor(0, 1);
-      lcd.print("Press *");
-      lcd.noDisplay(); //изключване на дисплея
-
-      sum = 0;
-  }
-  
-}
-6)	Shop() методът- 
-Направен е да работи, чрез switch-case, който изглежда по този начин. Има добавени още case-ове, аналогични на показания тук. Всяко число от 1 до 9 е код на продукт.
-
-void shop(){
-  char productKey = keypad.getKey();
-  switch(productKey){
-    case '1':
-        lcd.clear();
-        lcd.setCursor(0, 0);
-        lcd.print("# ");
-             lcd.print(productKey);
-        delay(1000);
-        lcd.setCursor(0, 0);
-          lcd.print("Cheeseburger");
-        lcd.setCursor(0, 1);
-        lcd.print(cheeseburgerPrice);
-        lcd.print(" lv.");
-
-        Serial.print("Cheeseburger                     ");
-        Serial.println(cheeseburgerPrice);
-
-      sum += cheeseburgerPrice;
-      break;
-...
-
 
 
 
