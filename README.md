@@ -58,3 +58,7 @@
 Този проект ще има развитие в бъдеще, защото е актуален в настоящето и може да постигне голям успех. Ще се подобри неговата хардуерна част, както и софтуерната.
 
 
+
+Tinkercad: https://www.tinkercad.com/things/8h7zmGDrerJ-cash-register/editel
+Notion: https://www.notion.so/5df67a0ef1cf4cdb820df446adfc7413?v=ba2ed34f180e431bad86fb2a23613352&pvs=4
+
