@@ -59,7 +59,7 @@
 
 
 
-Tinkercad: https://www.tinkercad.com/things/8h7zmGDrerJ-cash-register/editel 
+Tinkercad: [[https://www.tinkercad.com/things/8h7zmGDrerJ-cash-register/editel ](https://www.tinkercad.com/things/8h7zmGDrerJ)](https://www.tinkercad.com/things/8h7zmGDrerJ)
 
 Notion: https://www.notion.so/5df67a0ef1cf4cdb820df446adfc7413?v=ba2ed34f180e431bad86fb2a23613352&pvs=4
 
